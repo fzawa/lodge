@@ -35,12 +35,12 @@ hr {
     font-weight: bold;
     white-space: nowrap;
     color: $body-bg;
-    text-shadow: #777 1px 1px 0px, #777 -1px 1px 0px,
-                 #777 1px -1px 0px, #777 -1px -1px 0px;
+    //text-shadow: #777 1px 1px 0px, #777 -1px 1px 0px,
+    //             #777 1px -1px 0px, #777 -1px -1px 0px;
   }
 
   a.navbar-brand:hover, a.navbar-brand:focus {
-    color: #fff;
+    color: #123456;
   }
 }
 
