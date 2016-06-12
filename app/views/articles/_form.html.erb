@@ -19,7 +19,9 @@
   </div>
 
   <div class="form-group">
-    <%= f.label :tag_list %><br>
+    <%= f.label :tag_list %>
+    <%= link_to "", "#", class: ["tag_explan", "glyphicon", "glyphicon-exclamation-sign"], data: {toggle: "tooltip"}, title: tco("tag_input_explain") %>
+    <br>
     <%= f.text_field :tag_list, class: ["form-control", "js-tag-names"] %>
   </div>
 

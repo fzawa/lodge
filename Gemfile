@@ -64,6 +64,7 @@ gem 'compass-rails', '~> 2.0'
 gem 'omniauth-google-oauth2', '~> 0.2'
 gem 'carrierwave', '~> 0.10'
 gem 'jquery-fileupload-rails', '~> 0.4'
+gem 'jquery-ui-rails'
 gem 'qiita-markdown'
 
 group :development do

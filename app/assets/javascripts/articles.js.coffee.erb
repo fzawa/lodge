@@ -3,7 +3,7 @@ $ ->
   bhTags = new Bloodhound({
     datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
     queryTokenizer: Bloodhound.tokenizers.whitespace,
-    limit: 10,
+    limit: 50,
     dupDetector: (remoteMatch, localMatch) ->
       remoteMatch.id == localMatch.id
     ,
@@ -21,7 +21,7 @@ $ ->
        {
         hint: true,
         highlight: true,
-        minLength: 1
+        minLength: 0
       },
       {
         name: 'tagName',
@@ -33,6 +33,8 @@ $ ->
       }
     ]
   })
+
+  $(".tag_explan").tooltip();
 
   # ToC toggle
   $(document).on 'click', '.markdown-toc h1', (e)->

@@ -68,6 +68,7 @@ ja:
     forgot_your_password: パスワードをお忘れですか？
     didnt_receive_confirmation: 確認のメールが届きませんか？
     sign_in_with: "%{provider} でログイン"
+    tag_input_explain: "タグを入力した後、Tabキー、またはEnterキーを押してください"
     notification:
       article_update: "%{user_name} さんがあなたのストックした記事 '%{article_title}' を編集しました。"
       article_update_for_owner: "%{user_name} さんがあなたの書いた記事 '%{article_title}' を編集しました。"
