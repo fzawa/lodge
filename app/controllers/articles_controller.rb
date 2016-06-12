@@ -107,6 +107,9 @@ class ArticlesController < ApplicationController
       if @article.save
         format.html { redirect_to @article, notice: 'Article was successfully created.' }
         format.json { render :show, status: :created, location: @article }
+        # メール通知
+        @mail = NoticeMailer.sendmail_update(current_user, @article)
+        @mail.deliver
       else
         format.html { render :new }
         format.json { render json: @article.errors, status: :unprocessable_entity }
