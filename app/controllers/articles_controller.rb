@@ -9,13 +9,13 @@ class ArticlesController < ApplicationController
   # GET /articles
   # GET /articles.json
   def index
-    @articles = Article.recent_list(params[:page])
+    @articles = Article.order("updated_at DESC").recent_list(params[:page])
   end
 
   # GET /articles
   # GET /articles.json
   def feed
-    @articles = Article.feed_list(current_user, params[:page])
+    @articles = Article.order("updated_at DESC").feed_list(current_user, params[:page])
   end
 
   def draft
@@ -35,7 +35,7 @@ class ArticlesController < ApplicationController
       fulltext query[:text]
       with(:tags).all_of(query[:tags]) if query[:tags].present?
       with(:user, query[:users].first) if query[:users].present?
-      order_by(:created_at, :desc)
+      order_by(:updated_at, :desc)
       paginate :page => params[:page], :per_page => LodgeSettings.per_size
     end
     result = article_search.results
@@ -57,7 +57,7 @@ class ArticlesController < ApplicationController
   # GET /articles/stocks
   # GET /articles/stocks.json
   def stocked
-    @articles = Article.stocked_by(current_user, params[:page])
+    @articles = Article.order("updated_at DESC").stocked_by(current_user, params[:page])
   end
 
   # GET /articles/tag/1
