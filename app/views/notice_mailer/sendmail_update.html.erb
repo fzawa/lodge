@@ -1,5 +1,28 @@
-<h1>NoticeMailer#sendmail_update</h1>
+<!DOCTYPE html>
+<html>
 
-<p>
-  <%= @greeting %>, find me in app/views/notice_mailer/sendmail_update.html.erb
-</p>
+<head>
+<title></title>
+<meta charset="utf-8">
+</head>
+
+<body>
+<p>こんにちは。Lodgeです！<br><b><%= @user.name %></b>さんが新たに記事を投稿しました。</p>
+
+<table>
+  <tr>
+    <td>タイトル</td>
+    <td>: <%= @article.title %></td>
+  </tr>
+  <tr>
+    <td>タグ</td>
+    <td>: <%= @article.tag_list %></td>
+  </tr>
+  <tr>
+    <td>詳細</td>
+    <td>: <a href="<%= url_for :host => ENV['LODGE_DOMAIN'], :controller => :articles, :action => 'show', :id => @article.id %>"><%= url_for :host => ENV['LODGE_DOMAIN'], :controller => :articles, :action => 'show', :id => @article.id %></a></td>
+  </tr>
+</table>
+
+</body>
+</html>

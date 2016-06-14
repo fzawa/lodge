@@ -1,5 +1,5 @@
 class NoticeMailer < ActionMailer::Base
-  default from: "from@example.com"
+  default from: "lodge@rarara.com"
 
   # Subject can be set in your I18n file at config/locales/en.yml
   # with the following lookup:
@@ -12,7 +12,7 @@ class NoticeMailer < ActionMailer::Base
     @article = article
     mail(
       to: User.pluck(:email),
-      subject: '[Lodge]' + @article.title
+      subject: '[Lodge] [New] ' + @article.title
     )
   end
 end
