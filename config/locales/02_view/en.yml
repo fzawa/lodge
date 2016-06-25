@@ -68,7 +68,7 @@ en:
     forgot_your_password: Forgot your password?
     didnt_receive_confirmation: Didn't receive confirmation instructions?
     sign_in_with: "Sign in with %{provider}"
-    tag_input_explain: "s-fujita"
+    tag_input_explain: "Press Enter key or Tab key, after the TAG is input."
     notification:
       article_update: "Updated your stocked article \"%{article_title}\" by %{user_name} ."
       article_update_for_owner: "Updated your wrote article \"%{article_title}\" by %{user_name} ."
