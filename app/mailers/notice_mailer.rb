@@ -15,4 +15,15 @@ class NoticeMailer < ActionMailer::Base
       subject: '[Lodge] [New] ' + @article.title
     )
   end
+
+  def sendmail_comment(user, article)
+    @greeting = "Hi"
+    @user = user
+    @article = article
+    mail(
+      to: User.pluck(:email),
+      subject: '[Lodge] [Comment] ' + @article.title
+    )
+  end
+
 end
