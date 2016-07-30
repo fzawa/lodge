@@ -9,7 +9,10 @@ class ArticlesController < ApplicationController
   # GET /articles
   # GET /articles.json
   def index
-    @articles = Article.order("updated_at DESC").recent_list(params[:page])
+    @articles = Article.joins("left join comments on articles.id=comments.article_id")
+                       .group("articles.id")
+                       .order("comments.updated_at DESC")
+                       .recent_list(params[:page])
   end
 
   # GET /articles
