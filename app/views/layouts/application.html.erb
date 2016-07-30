@@ -195,7 +195,11 @@
             <nav class="col-xs-3">
               <% # Post new article %>
               <p class="article-new-link-area">
-                <%= link_to t('articles.new_title'), new_article_path, class: ["btn", "btn-block", "btn-success"] %>
+                <% if current_user.read_only == "t" then %>
+                  <button class="btn btn-block" title="<%= t('common.forbidden_operation') %>" disabled><%= t('articles.new_title') %></button>
+                <% else %>
+                  <%= link_to t('articles.new_title'), new_article_path, class: ["btn", "btn-block", "btn-success"] %>
+                <% end %>
               </p>
 
               <% # Pupular article list %>

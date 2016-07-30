@@ -66,6 +66,7 @@ ja:
     sign_in_by_other_means: その他の方法
     contribution: Contribution
     forgot_your_password: パスワードをお忘れですか？
+    forbidden_operation: ユーザー属性により禁止されています
     didnt_receive_confirmation: 確認のメールが届きませんか？
     sign_in_with: "%{provider} でログイン"
     tag_input_explain: "タグを入力した後、Tabキー、またはEnterキーを押してください"

@@ -13,6 +13,7 @@ User.create(email: 'user02@example.com', name: 'Hansen', password: 'password', c
 User.create(email: 'user03@example.com', name: 'Meyer', password: 'password', confirmed_at: now)
 User.create(email: 'user04@example.com', name: 'Ward', password: 'password', confirmed_at: now)
 User.create(email: 'user05@example.com', name: 'Zafiriou', password: 'password', confirmed_at: now)
+User.create(email: 'user06@example.com', name: 'read', password: 'password', confirmed_at: now, read_only: "t")
 
 def create_dummy_articles(offset, dest)
   titles = Forgery(:lorem_ipsum).sentences(151).split(/(?:\.) /)
