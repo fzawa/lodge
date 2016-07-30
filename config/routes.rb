@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     omniauth_callbacks: 'custom_devise/omniauth_callbacks',
   }
 
-  resources :users, only: [:show]
+  resources :users, only: [:index, :show]
 
   resources :tags, only: [:index], param: :tag do
     collection do
@@ -26,6 +26,7 @@ Rails.application.routes.draw do
       get :stocked
       get :feed
       get :owned
+      get :user, path: "user/:id", format: false, id: /[0-9]+/
       get :tagged, path: "tag/:tag", format: false, tag: /.*/
       get "draft"
     end

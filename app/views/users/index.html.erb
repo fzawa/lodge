@@ -1,0 +1,16 @@
+<h1><%= tco :user_list_title %></h1>
+
+<table class="user-table list-table table">
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td>
+          <div class="dropdown"><%= render partial: "users/info_dropdown", locals: {user: user} %></div>
+        </td>
+        <td class="users-article-column text-right">
+          <%= link_to tc(:post_count, count: user.articles.count), user_articles_path(user.id), title: tc(:post_count, count: user.articles.count) %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -66,6 +66,14 @@ class ArticlesController < ApplicationController
     @articles = Article.owned_by(current_user, params[:page])
   end
 
+  # GET /articles/uesr/1
+  # GET /articles/user/1.json
+  def user
+    user = User.find_by(id: params[:id])
+    @user_name = user.name
+    @articles = Article.owned_by(user, params[:page])
+  end
+
   # GET /articles/tag/1
   # GET /articles/tag/1.json
   def tagged
