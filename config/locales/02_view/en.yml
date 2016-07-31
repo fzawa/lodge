@@ -54,7 +54,8 @@ en:
 
       ※ Queries is `AND` conditions when multiple specified.
 
-    user_list_title: Users
+    user_list_title: User list
+    user_list_short_title: Users
 
     tag_list_title: Tags
     recent_tag_list_title: Recent tags

@@ -54,7 +54,8 @@ ja:
 
       ※ 各クエリは複数指定した場合すべてAND検索となります。
 
-    user_list_title: ユーザー
+    user_list_title: ユーザーリスト
+    user_list_short_title: ユーザー
 
     tag_list_title: タグ一覧
     recent_tag_list_title: 最近追加されたタグ一覧

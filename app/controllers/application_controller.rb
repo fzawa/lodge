@@ -16,6 +16,7 @@ class ApplicationController < ActionController::Base
   before_action :read_user_articles, except: [:sign_in, :sign_up]
   before_action :read_popular_articles, except: [:sign_in, :sign_up]
   before_action :read_recent_tags, except: [:sign_in, :sign_up]
+  before_action :read_users, except: [:sign_in, :sign_up]
   before_action :load_pre_url
   before_action :set_pre_url, except: [:new, :edit, :show, :create, :update, :destroy, :sign_up, :preview, :list]
 
@@ -61,6 +62,11 @@ class ApplicationController < ActionController::Base
     @recent_tags = []
     return unless current_user
     @recent_tags = Article.new.tag_counts_on(:tags).order("id DESC").limit(RIGHT_LIST_SIZE)
+  end
+
+  def read_users
+    return unless current_user
+    @users = User.all.limit(RIGHT_LIST_SIZE)
   end
 
   def read_notifications
