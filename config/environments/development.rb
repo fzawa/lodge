@@ -59,17 +59,23 @@ Rails.application.configure do
   # メールに記載する本サービスのURL
   config.action_mailer.default_url_options = { :host => ENV['LODGE_DOMAIN'] }
 
-  # SMTPの指定
+  # メール配送方式
   config.action_mailer.delivery_method = ENV["DELIVERY_METHOD"].to_sym
-  config.action_mailer.smtp_settings = {
-    :address              => ENV["SMTP_ADDRESS"],
-    :port                 => ENV["SMTP_PORT"],
-    :domain               => ENV["LODGE_DOMAIN"],
-    :user_name            => ENV["SMTP_USERNAME"],
-    :password             => ENV["SMTP_PASSWORD"],
-    :authentication       => ENV["SMTP_AUTH_METHOD"].to_sym,
-    :enable_starttls_auto => ENV["SMTP_ENABLE_STARTTLS_AUTO"],
-  }
+
+  # SMTPの設定
+  if config.action_mailer.delivery_method == :smtp then
+    config.action_mailer.smtp_settings = {
+      :address              => ENV["SMTP_ADDRESS"],
+      :port                 => ENV["SMTP_PORT"],
+      :domain               => ENV["LODGE_DOMAIN"],
+      :user_name            => ENV["SMTP_USERNAME"],
+      :password             => ENV["SMTP_PASSWORD"],
+      :enable_starttls_auto => ENV["SMTP_ENABLE_STARTTLS_AUTO"],
+    }
+    if ENV["SMTP_AUTH_METHOD"].tainted? then
+      config.action_mailer.smtp_settings[:authentication] = ENV["SMTP_AUTH_METHOD"].to_sym
+    end
+  end
 
   config.action_mailer.smtp_settings[:openssl_verify_mode] = ENV["SMTP_OPENSSL_VERIFY_MODE"] if ENV["SMTP_OPENSSL_VERIFY_MODE"].present?
 end
