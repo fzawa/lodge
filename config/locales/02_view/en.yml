@@ -41,8 +41,9 @@ en:
     new_post: New post
     draft_list: Drafts
     feed_article_list_title: Listing articles of your feed.
-    recent_article_list_title: Listing recent articles.
+    article_list_title: Listing articles.
     tag: Tag
+    go_to_tag_list_title: Go to Tags
     article_search: Search articles by title
     article_search_query_help_md: |
       ### Search query
@@ -145,10 +146,10 @@ en:
       <h3>You do not follow the tags still.</h3>
       <p>
         You can display only the articles related to the tag that you follow here.
-        From the menu on the right, click the "Tag List", we are going to follow the tags of interest.
+        From the menu on the right, click the "Go to Tags", we are going to follow the tags of interest.
       </p>
       <p>
-        If you want to view all the articles, please select the "Latest Articles" from the right menu. 
+        If you want to view all the articles, please select the "Listing articles" from the upper menu. 
       </p>
     stocks_introduction:
       <h3>You do not have a stock article yet.</h3>
@@ -161,7 +162,7 @@ en:
         the article that was in the mood to see any time it later if I stock the article.
       </p>
       <p>
-        If you want to view all the articles, please select the "Latest Articles" from the right menu. 
+        If you want to view all the articles, please select the "Listing articles" from the upper menu. 
       </p>
   tags:
     follow: Follow

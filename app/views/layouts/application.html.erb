@@ -86,9 +86,9 @@
 
                     <% # Recent article list %>
                     <li class="dropdown">
-                      <%= link_to tco("recent_article_list_title"), articles_path %><i class="caret dropdown-toggle" data-toggle="dropdown"></i>
+                      <%= link_to tco("article_list_title"), articles_path %><i class="caret dropdown-toggle" data-toggle="dropdown"></i>
                       <div class="dropdown-menu" role="menu">
-                        <h5><strong><%= tco("recent_article_list_title") %></strong></h5>
+                        <h5><strong><%= tco("article_list_title") %></strong></h5>
                         <ol>
                           <% @recent_articles.each do |article| %>
                             <li><u><%= link_to article.title, article_path(article) %></u></li>
@@ -249,7 +249,7 @@
                 </ol>
                 <% unless @user_articles.empty? %>
                   <div class="clearfix">
-                    <%= link_to tco("more_display"), tags_path %>
+                    <%= link_to tco("go_to_tag_list_title"), tags_path %>
                   </div>
                 <% end %>
               </div>
