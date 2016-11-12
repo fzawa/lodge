@@ -15,7 +15,15 @@
 <table class="list-table table article-table">
   <colgroup span="1"></colgroup>
   <colgroup span="4"></colgroup>
-  
+  <thead>
+    <tr>
+      <th><%= t("articles.title") %></th>
+      <th><%= t("common.tag") %></th>
+      <th><%= t("articles.author") %></th>
+      <th><%= t("common.updated_at") %></th>
+      <th> </th>
+    </tr>
+  </thead>
   <tbody>
     <% articles.each do |article| %>
       <tr>
@@ -32,12 +40,12 @@
             <% end %>
           <% end %>
         </td>
+        <td><div class="dropdown"><%= render partial: "users/info_dropdown", locals: {user: article.user} %></div></td>
+        <td><%= article.updated_at.to_s(:date) %></td>
         <td>
           <%= render partial: "articles/stock_count", locals: {article: article} %>
           <%= render partial: "articles/comment_count", locals: {article: article} %>
         </td>
-        <td><div class="dropdown"><%= render partial: "users/info_dropdown", locals: {user: article.user} %></div></td>
-        <td><%= article.updated_at.to_s(:date) %></td>
       </tr>
     <% end %>
   </tbody>

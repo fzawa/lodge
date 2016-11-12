@@ -42,6 +42,7 @@ en:
     draft_list: Drafts
     feed_article_list_title: Listing articles of your feed.
     recent_article_list_title: Listing recent articles.
+    tag: Tag
     article_search: Search articles by title
     article_search_query_help_md: |
       ### Search query
@@ -124,6 +125,7 @@ en:
     new_title: New article
     edit_title: "Edit of '%{article_title}'"
     index_title: Index
+    author: Author
     title: Title
     user: User
     to_list: To all articles
