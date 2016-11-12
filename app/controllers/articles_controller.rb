@@ -11,7 +11,7 @@ class ArticlesController < ApplicationController
   def index
     @articles = Article.joins("left join comments on articles.id=comments.article_id")
                        .group("articles.id")
-                       .order("comments.updated_at DESC")
+                       .order("case when comments.updated_at > articles.updated_at then comments.updated_at else articles.updated_at end DESC")
                        .recent_list(params[:page])
   end
 
