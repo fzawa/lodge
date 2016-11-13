@@ -38,7 +38,7 @@
                       <%= render partial: "notifications/info_dropdown", locals: {notifications: @notifications} %>
                     </li>
                     <li class="dropdown">
-                      <%= render partial: "users/info_dropdown", locals: {user: current_user} %>
+                      <%= render partial: "users/info_dropdown", locals: {user: current_or_guest_user} %>
                     </li>
                     <li class="dropdown">
                       <%= link_to "", "#", class: ["glyphicon", "glyphicon-cog", "dropdown-toggle"], "data-toggle" => "dropdown" %>
@@ -63,7 +63,7 @@
 
               <% # Menu list %>
               <div class="global-menu-list row navbar-right">
-                <% if current_user %>
+                <% if current_or_guest_user %>
                   <ul class="navbar-text list-inline">
 
                     <% # Recent feed article list %>
@@ -162,7 +162,7 @@
 
                 <p class="navbar-text">
                   <% if user_signed_in? %>
-                    <strong class="num-of-contribution"><%= current_user.contribution %></strong> <%= tco :contribution %>
+                    <strong class="num-of-contribution"><%= current_or_guest_user.contribution %></strong> <%= tco :contribution %>
                   <% end %>
                 </p>
               </div>
@@ -189,7 +189,7 @@
         <div class="row">
 
           <% # Search area %>
-          <% if current_user %>
+          <% if current_or_guest_user %>
             <%= form_tag search_articles_path, method: :get, id: "article-search-area", role: "search" do %>
               <div class="input-group col-xs-6 col-xs-offset-3">
                 <%= text_field_tag "query", params[:query], class: ["form-control", "search-query-help"], data: { content: markdown(tco('article_search_query_help_md')) }, placeholder: tco("article_search") %> 
@@ -210,11 +210,11 @@
           </div>
 
           <% # Right area %>
-          <% if current_user %>
+          <% if current_or_guest_user %>
             <nav class="col-xs-3">
               <% # Post new article %>
               <p class="article-new-link-area">
-                <% if current_user.read_only == "t" then %>
+                <% if current_or_guest_user.read_only == "t" then %>
                   <button class="btn btn-block" title="<%= t('common.forbidden_operation') %>" disabled><%= t('articles.new_title') %></button>
                 <% else %>
                   <%= link_to t('articles.new_title'), new_article_path, class: ["btn", "btn-block", "btn-success"] %>

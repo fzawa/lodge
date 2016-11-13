@@ -38,7 +38,7 @@
   <% end %>
   <div class="actions">
     <% is_edit ||= false %>
-    <% if is_edit == false || @article.user_id == current_user.id %>
+    <% if is_edit == false || @article.user_id == current_or_guest_user.id %>
       <div>
         <%= f.check_box :is_public_editable %>
         <%= f.label :is_public_editable %>
@@ -46,7 +46,7 @@
     <% end %>
 
     <% unless is_edit %>
-      <%= f.hidden_field :user_id, :value => current_user.id %>
+      <%= f.hidden_field :user_id, :value => current_or_guest_user.id %>
     <% end %>
     <%= f.hidden_field :lock_version %>
     <%= f.submit class: ["btn", "btn-success"] %>

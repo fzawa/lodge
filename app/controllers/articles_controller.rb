@@ -18,11 +18,11 @@ class ArticlesController < ApplicationController
   # GET /articles
   # GET /articles.json
   def feed
-    @articles = Article.order("updated_at DESC").feed_list(current_user, params[:page])
+    @articles = Article.order("updated_at DESC").feed_list(current_or_guest_user, params[:page])
   end
 
   def draft
-    @articles = Article.owned_draft(current_user)
+    @articles = Article.owned_draft(current_or_guest_user)
       .page(params[:page])
       .per(PER_SIZE)
   end
@@ -45,9 +45,9 @@ class ArticlesController < ApplicationController
     unless query[:stocked].nil?
       result.select! do |r|
         if query[:stocked]
-          r.stocks.pluck(:user_id).include?(current_user.id)
+          r.stocks.pluck(:user_id).include?(current_or_guest_user.id)
         elsif query[:stocked] == false
-          r.stocks.pluck(:user_id).exclude?(current_user.id)
+          r.stocks.pluck(:user_id).exclude?(current_or_guest_user.id)
         else
           r
         end
@@ -60,13 +60,13 @@ class ArticlesController < ApplicationController
   # GET /articles/stocks
   # GET /articles/stocks.json
   def stocked
-    @articles = Article.order("updated_at DESC").stocked_by(current_user, params[:page])
+    @articles = Article.order("updated_at DESC").stocked_by(current_or_guest_user, params[:page])
   end
 
   # GET /articles/tag/1
   # GET /articles/tag/1.json
   def owned
-    @articles = Article.owned_by(current_user, params[:page])
+    @articles = Article.owned_by(current_or_guest_user, params[:page])
   end
 
   # GET /articles/uesr/1
@@ -87,9 +87,9 @@ class ArticlesController < ApplicationController
   # GET /articles/1
   # GET /articles/1.json
   def show
-    @stock = Stock.find_by(article_id: @article.id, user_id: current_user.id)
+    @stock = Stock.find_by(article_id: @article.id, user_id: current_or_guest_user.id)
     @stocked_users = @article.stocked_users
-    @article.remove_user_notification(current_user)
+    @article.remove_user_notification(current_or_guest_user)
   end
 
   # POST /articles/preview
@@ -119,7 +119,7 @@ class ArticlesController < ApplicationController
         format.html { redirect_to @article, notice: 'Article was successfully created.' }
         format.json { render :show, status: :created, location: @article }
         # メール通知
-        @mail = NoticeMailer.sendmail_update(current_user, @article)
+        @mail = NoticeMailer.sendmail_update(current_or_guest_user, @article)
         @mail.deliver
       else
         format.html { render :new }
@@ -132,7 +132,7 @@ class ArticlesController < ApplicationController
   # PATCH/PUT /articles/1.json
   def update
     respond_to do |format|
-      @article.update_user_id = current_user.id
+      @article.update_user_id = current_or_guest_user.id
       if @article.update(article_params)
         format.html { redirect_to @article, notice: 'Article was successfully updated.' }
         format.json { render :show, status: :ok, location: @article }
@@ -154,11 +154,11 @@ class ArticlesController < ApplicationController
   end
 
   def stock
-    current_user.stock(@article)
+    current_or_guest_user.stock(@article)
   end
 
   def unstock
-    current_user.unstock(@article)
+    current_or_guest_user.unstock(@article)
     render :stock
   end
 
@@ -186,7 +186,7 @@ class ArticlesController < ApplicationController
   end
 
   def owner?
-    @article.user_id == current_user.id
+    @article.user_id == current_or_guest_user.id
   end
 
   # :nocov:

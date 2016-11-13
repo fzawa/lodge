@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable,
          :confirmable, :lockable, :omniauthable
   validates_presence_of :name
+  validates :email, :presence => true, :email => true
   before_save :generate_gravatar
 
   has_many :articles

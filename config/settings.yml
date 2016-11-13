@@ -1,3 +1,5 @@
 lodge:
   per_size: 30
   right_list_size: 15
+  guest_name: 'Guest'
+  guest_email: 'guest@example.com'

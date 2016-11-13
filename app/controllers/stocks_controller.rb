@@ -8,7 +8,7 @@ class StocksController < ApplicationController
   # POST /stocks
   # POST /stocks.json
   def create
-    @stock = Stock.new(stock_params.merge :user_id => current_user.id)
+    @stock = Stock.new(stock_params.merge :user_id => current_or_guest_user.id)
     respond_to do |format|
       if @stock.save
         format.html { redirect_to :back, notice: 'Stock was successfully created.' }

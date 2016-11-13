@@ -1,4 +1,4 @@
-<% if current_user.stock?(article) %>
+<% if current_or_guest_user.stock?(article) %>
   <%= link_to unstock_article_path(article), method: :post, class: "stock-link", remote: true do -%>
     <%= image_tag "stocked.png" %><%= article.stocks.size -%>
   <% end %>

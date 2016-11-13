@@ -2,7 +2,7 @@
 
   <div class="article-header-area panel-heading clearfix">
     <div class="pull-right clearfix">
-      <% is_owner = @article.user_id == current_user.id %>
+      <% is_owner = @article.user_id == current_or_guest_user.id %>
       <% if (is_owner || @article.is_public_editable) && current_user.read_only != "t" %>
         <%= link_to tco('edit'), edit_article_path(@article) %>
       <% end %>
@@ -69,7 +69,7 @@
           <div class="comment-info dropdown"><%= render partial: "users/info_dropdown", locals: {user: comment.user} %></div>
           <div class="comment-info date-time">
             <%= comment.updated_at %>
-            <% if comment.user == current_user %> 
+            <% if comment.user == current_or_guest_user %>
               |
               <%= content_tag :a, tco('edit'), class: "comment-edit-link", "data-toggle" => "collapse", "data-target" => "[action='#{comment_path(comment)}']" %>
               |
@@ -80,7 +80,7 @@
         <div class="list-group-body markdown codehilite">
           <%= markdown(comment.body).html_safe %>
         </div>
-        <% if comment.user == current_user %> 
+        <% if comment.user == current_or_guest_user %>
           <%= render 'comments/form', hide: true, comment: comment %>
         <% end %>
       </li>

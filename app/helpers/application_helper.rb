@@ -56,7 +56,7 @@ module ApplicationHelper
   end
 
   def notification_message(notification)
-    localize_key = current_user == notification.article.user ?
+    localize_key = current_or_guest_user == notification.article.user ?
       notification.localize_key_for_owner :
       notification.localize_key
 

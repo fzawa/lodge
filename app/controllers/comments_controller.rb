@@ -12,7 +12,7 @@ class CommentsController < ApplicationController
         format.html { redirect_to article, notice: 'Comment was successfully created.' }
         format.json { render :show, status: :created, location: article }
         # メール通知
-        @mail = NoticeMailer.sendmail_comment(current_user, article)
+        @mail = NoticeMailer.sendmail_comment(current_or_guest_user, article)
         @mail.deliver
       else
         format.html { redirect_to article, alert: "Failed to create comment." }
@@ -56,7 +56,7 @@ class CommentsController < ApplicationController
   end
 
   def check_permission
-    return if @comment.user_id == current_user.id
+    return if @comment.user_id == current_or_guest_user.id
     redirect_to articles_url
   end
 end
