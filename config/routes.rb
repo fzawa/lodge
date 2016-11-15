@@ -50,7 +50,13 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'articles#feed'
+  root_name = 'articles#'
+  if ENV['ROOT_PAGE'] != nil and ENV['ROOT_PAGE'] != 'articles' then
+        root_name += ENV['ROOT_PAGE']
+  else
+	root_name += 'index'
+  end
+  root root_name
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
