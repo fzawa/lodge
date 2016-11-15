@@ -12,7 +12,7 @@ readonly EXEC='bundle exec'
   # Initialize solr.
   $EXEC rake sunspot:solr:start RAILS_ENV=production
   sleep 3
-  $EXEC rake sunspot:reindex RAILS_ENV=production
+  #$EXEC rake sunspot:reindex RAILS_ENV=production
   $EXEC rake sunspot:solr:stop RAILS_ENV=production
   # Copy production config files to `$LODGE_ROOT_PATH/solr/`.
   cp -rf $MY_PATH/production $LODGE_ROOT_PATH/solr
