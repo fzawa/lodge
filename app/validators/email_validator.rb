@@ -13,7 +13,11 @@ class EmailValidator < ActiveModel::EachValidator
       m = Mail::Address.new(value)
       # We must check that value contains a domain, the domain has at least
       # one '.' and that value is an email address
-      r = m.domain!=nil && m.domain.match('\.') && m.address == value && m.domain==ENV["LODGE_MAIL_DOMAIN"]
+      r = m.domain!=nil && m.domain.match('\.') && m.address == value
+      # Check domain
+      if ENV["LODGE_MAIL_DOMAIN"].present? then
+        r = m.domain==ENV["LODGE_MAIL_DOMAIN"]
+      end 
     rescue
       r = false
     end
