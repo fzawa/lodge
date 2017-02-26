@@ -126,10 +126,10 @@ __イントラネット限定でも使える、ナレッジ/ノウハウ情報�
 
 [github/gemoji](https://github.com/github/gemoji)を利用して各種絵文字を利用できます。
 
-絵文字をダウンロードする為、以下のコマンドを実行します。
+絵文字に対応していないブラウザ用に絵文字画像をダウンロードするには、以下のコマンドを実行します。(macOS Sierra以上でのみ実行可能)
 
 ```bash
-bundle exec rake emoji
+bundle exec gemoji extract public/images/emoji
 ```
 
 ## 全文検索エンジンの準備
