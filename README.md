@@ -32,15 +32,17 @@ SUP (Skill Up Project) での情報共有ツール。[Lodge](https://github.com/
     - ブラウザ・OSがサポートしていない絵文字データのダウンロード
     - Macの場合、Sierra以上のみで実行可能
   - `./setup/sunspot-solr/setup-sunspot-solor-development.sh`
-4. Lodgeの起動
+4. [任意] サンプルデータの投入
+  - `bin/rake sunspot:solr:start`
+  - `bundle exec rake db:seed`
+    - サンプルユーザー・記事をDBに登録する
+  - `bin/rake sunspot:reindex`
+  - `bin/rake sunspot:solr:stop`
+5. Lodgeの起動
   - `bin/rake sunspot:solr:start`
     - 全文検索エンジンが起動する
     - 再起動の場合は `bin/rake sunspot:solr:restart`
   - `bundle exec rails server`
-5. [任意] サンプルデータの投入
-  - `bundle exec rake db:seed`
-    - サンプルユーザー・記事をDBに登録する
-    - Lodge起動中のみ実行可能
 6. ブラウザからアクセス
   - http://localhost:3000/
 7. Lodgeの終了
