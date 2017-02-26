@@ -3,7 +3,7 @@
   <div class="article-header-area panel-heading clearfix">
     <div class="pull-right clearfix">
       <% is_owner = @article.user_id == current_or_guest_user.id %>
-      <% if (is_owner || @article.is_public_editable) && current_user.read_only != "t" %>
+      <% if (is_owner || @article.is_public_editable) && current_or_guest_user.read_only != "t" %>
         <%= link_to tco('edit'), edit_article_path(@article) %>
       <% end %>
       <% if @article.update_histories.size > 0 %>
@@ -88,7 +88,7 @@
   <% end %>
 </ul>
 
-<% if current_user.read_only != "t" then %>
+<% if current_or_guest_user.read_only != "t" then %>
   <h2 class="lead"><%= tc :comment_form_title %></h2>
   <%= render 'comments/form', hide: false, comment: Comment.new %>
 <% end %>

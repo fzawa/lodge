@@ -46,6 +46,7 @@ class Article < ActiveRecord::Base
       end
     end
     time :created_at
+    time :updated_at
   end
 
   # ===== Class methods =====
