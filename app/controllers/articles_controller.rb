@@ -13,6 +13,17 @@ class ArticlesController < ApplicationController
                        .group("articles.id")
                        .order("case when comments.updated_at > articles.updated_at then comments.updated_at else articles.updated_at end DESC")
                        .recent_list(params[:page])
+    if current_or_guest_user.read_only == "t"
+      flash.now[:notice] = 
+              '<center><div id="notice" class="alert alert-success">' +
+                '<h4><strong>アカウントを今すぐ作成</strong></h4>' +
+                '<p>アカウントを作成すると、記事を作成したり、コメントをけることができます。<br>また、記事が投稿されるとメールで通知します。</p>' +
+                '<div style="margin-top: 15px;">' +
+                  '<div class="btn-group" style="margin-right: 10px;"><input class="btn btn-success" onclick="location.href=\'/users/sign_up\'" value="Sign Up"></div>' +
+                  '<div class="btn-group"><input class="btn btn-success" onclick="location.href=\'/users/sign_in\'" value="Login"></div>' +
+                '</div>' +
+              '</div></center>'
+    end
   end
 
   # GET /articles

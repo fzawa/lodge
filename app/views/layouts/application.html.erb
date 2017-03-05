@@ -177,11 +177,20 @@
         <% # Notification area %>
         <div class="row">
           <div>
-            <% if notice %>
-              <p id="notice" class="alert alert-success"><%= notice %></p>
-            <% end %>
-            <% if alert %>
-              <p class="alert alert-danger"><%= alert %></p>
+            <% if current_or_guest_user.read_only == "t" then %>
+              <% if notice %>
+                <%= raw(notice) %>
+              <% end %>
+              <% if alert %>
+                <p class="alert alert-danger"><%= alert %></p>
+              <% end %>
+            <% else %>
+              <% if notice %>
+                <p id="notice" class="alert alert-success"><%= notice %></p>
+              <% end %>
+              <% if alert %>
+                <p class="alert alert-danger"><%= alert %></p>
+              <% end %>
             <% end %>
           </div>
         </div>
