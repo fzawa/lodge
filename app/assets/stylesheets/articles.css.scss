@@ -3,11 +3,16 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .article-table {
-  colgroup:first-child {
-    width: 40%;
+  .article-user-column {
+    width: 140px;
   }
-  colgroup:last-child {
-    width: 60%;
+  .article-update-column {
+    width: 100px;
+    text-align: center;
+  }
+  .article-count-column {
+    width: 90px;
+    text-align: center;
   }
 }
 

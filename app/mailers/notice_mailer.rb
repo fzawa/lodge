@@ -26,4 +26,15 @@ class NoticeMailer < ActionMailer::Base
     )
   end
 
+  def sendmail_edit(user, article, update_history)
+    @greeting = "Hi"
+    @user = user
+    @article = article
+    @update_history = update_history
+    mail(
+      to: User.pluck(:email),
+      subject: '[Lodge] [Edit] ' + @article.title
+    )
+  end
+
 end
