@@ -1,9 +1,13 @@
-<% if current_or_guest_user.stock?(article) %>
-  <%= link_to unstock_article_path(article), method: :post, class: "stock-link", remote: true do -%>
-    <%= image_tag "stocked.png" %><%= article.stocks.size -%>
-  <% end %>
+<% if current_or_guest_user.read_only == "t" %>
+  <%= render 'articles/stock_error_help' %>
 <% else %>
-  <%= link_to stock_article_path(article), method: :post, class: "stock-link", remote: true do -%>
-    <%= image_tag "unstocked.png" %><%= article.stocks.size -%>
+  <% if current_or_guest_user.stock?(article) %>
+    <%= link_to unstock_article_path(article), method: :post, class: "stock-link", remote: true do -%>
+      <%= image_tag "stocked.png" %><%= article.stocks.size -%>
+    <% end %>
+  <% else %>
+    <%= link_to stock_article_path(article), method: :post, class: "stock-link", remote: true do -%>
+      <%= image_tag "unstocked.png" %><%= article.stocks.size -%>
+    <% end %>
   <% end %>
 <% end %>

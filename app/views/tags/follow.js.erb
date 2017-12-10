@@ -1,2 +1,5 @@
+<% if current_or_guest_user.read_only == "t" %>
+<% else %>
 $('a.follow-link[href="<%= escape_javascript(follow_tag_path @tag) %>"], a.follow-link[href="<%= escape_javascript(unfollow_tag_path @tag) %>"]')
   .replaceWith('<%= escape_javascript(render partial: "tags/follow", locals: {tag: @tag}) %>');
+<% end %>

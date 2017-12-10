@@ -1,0 +1,28 @@
+<% uuid = next_uuid %>
+<%= link_to image_tag('unstocked.png') + "0", "#", data: {toggle: "modal", target: "[data-uuid='#{uuid}']"} %>
+
+
+
+<%= content_tag :div, class: ["modal", "fade"], data: {uuid: uuid} do %>
+  <div class="modal-dialog modal-md">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" style="font-size:21px; text-align: center;">投稿をストックするにはユーザー登録が必要です。</h4>
+      </div>
+      <div class="modal-body">
+        <div class="nolineSeparator">
+          <div class="btn-group">
+            <input class="btn btn-success" onclick="location.href='/users/sign_up'" value="ユーザー登録">
+          </div>
+        </div>
+
+        <div class="lineSeparator">
+          <div class="lineSeparator_text">または</div>
+          <div style="font-size:21px; margin-bottom:10px;">すでにアカウントを持っている方は</div>
+          <div class="btn-group"><input class="btn btn-success" onclick="location.href='/users/sign_in'" value="Login"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

@@ -1,9 +1,13 @@
-<% if current_or_guest_user.follow?(tag) %>
-  <%= link_to unfollow_tag_path(tag), method: :post, class: "follow-link", remote: true do %>
-    <%= image_tag "stocked.png" %><span><%= t "tags.unfollow" %></span>
-  <% end %>
+<% if current_or_guest_user.read_only == "t" %>
+  <%= render 'articles/stock_error_help' %>
 <% else %>
-  <%= link_to follow_tag_path(tag), method: :post, class: "follow-link", remote: true do %>
-    <%= image_tag "unstocked.png" %><span><%= t "tags.follow" %></span>
+  <% if current_or_guest_user.follow?(tag) %>
+    <%= link_to unfollow_tag_path(tag), method: :post, class: "follow-link", remote: true do %>
+      <%= image_tag "stocked.png" %><span><%= t "tags.unfollow" %></span>
+    <% end %>
+  <% else %>
+    <%= link_to follow_tag_path(tag), method: :post, class: "follow-link", remote: true do %>
+      <%= image_tag "unstocked.png" %><span><%= t "tags.follow" %></span>
+    <% end %>
   <% end %>
 <% end %>

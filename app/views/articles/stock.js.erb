@@ -1,9 +1,10 @@
+<% if current_or_guest_user.read_only == "t" %>
+<% else %>
 <% path = current_or_guest_user.stock?(@article) ? stock_article_path(@article) : unstock_article_path(@article) %>
 $('a.stock-link[href="<%= escape_javascript(path) %>"]')
   .html('<%= escape_javascript(render partial: "articles/stock_count", locals: {article: @article}) %>');
-
 $('a.stock-text-link[href="<%= escape_javascript(path) %>"]')
   .html('<%= escape_javascript(render partial: "articles/stock_text", locals: {article: @article}) %>');
-
 $('.stock-users')
   .replaceWith('<%= escape_javascript(render partial: "articles/stock_users", locals: {article: @article}) %>');
+<% end %>
