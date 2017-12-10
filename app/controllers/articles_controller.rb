@@ -141,7 +141,7 @@ class ArticlesController < ApplicationController
 
   # PATCH/PUT /articles/1
   # PATCH/PUT /articles/1.json
-  def update    
+  def update
     respond_to do |format|
       @article.update_user_id = current_or_guest_user.id
       if @article.update(article_params)
