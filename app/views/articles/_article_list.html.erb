@@ -13,12 +13,9 @@
 <%= paginate articles %>
 
 <table class="list-table table article-table">
-  <colgroup span="1"></colgroup>
-  <colgroup span="4"></colgroup>
   <thead>
     <tr>
       <th><%= t("articles.title") %></th>
-      <th><%= t("common.tag") %></th>
       <th><%= t("articles.author") %></th>
       <th><%= t("common.updated_at") %></th>
       <th> </th>
@@ -32,17 +29,21 @@
             <% if article.draft? %><i class="glyphicon glyphicon-pencil"></i><% end %>
             <%= link_to article.title, article, title: article.title %>
           </p>
-        </td>
-        <td class="article-tags-column">
-          <% article.tags.each do |tag| %>
-            <%= link_to tagged_articles_path(tag.name), class: :tag do %>
-              <span class="label label-default"><%= tag.name %></span>
+          <p>
+            <% article.tags.each do |tag| %>
+              <%= link_to tagged_articles_path(tag.name), class: :tag do %>
+                <span class="label label-default"><%= tag.name %></span>
+              <% end %>
             <% end %>
-          <% end %>
+          </p>
         </td>
-        <td><div class="dropdown"><%= render partial: "users/info_dropdown", locals: {user: article.user} %></div></td>
-        <td><%= article.updated_at.to_s(:date) %></td>
-        <td>
+        <td class="article-user-column">
+          <div class="dropdown"><%= render partial: "users/info_dropdown", locals: {user: article.user} %></div>
+        </td>
+        <td class="article-update-column">
+          <%= article.updated_at.to_s(:date) %>
+        </td>
+        <td class="article-count-column">
           <%= render partial: "articles/stock_count", locals: {article: article} %>
           <%= render partial: "articles/comment_count", locals: {article: article} %>
         </td>

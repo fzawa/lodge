@@ -1,21 +1,23 @@
 <h3><strong><%= tc :current_article, article_title: @article.title %></strong></h3>
 
 <table class="table update-history-table">
-  <colgroup span="1"></colgroup>
-  <colgroup span="2"></colgroup>
   <tbody>
     <% @update_histories.each do |update_history| %>
       <tr>
-        <td><%= link_to update_history.new_title, update_history %></td>
-        <td class="article-tags-column">
-          <div>
+        <td>
+          <p><%= link_to update_history.new_title, update_history %></p>
+          <p>
             <% update_history.new_tags.split(",").each do |tag| %>
               <%= content_tag :span, tag, class: ["label", "label-default"] %>
             <% end %>
-          </div>
+          </p>
         </td>
-        <td class="dropdown"><%= render partial: "users/info_dropdown", locals: { user: update_history.user } %></td>
-        <td><%= update_history.updated_at %></td>
+        <td class="article-user-column">
+          <div class="dropdown"><%= render partial: "users/info_dropdown", locals: { user: update_history.user } %></div>
+        </td>
+        <td class="article-update-column">
+          <%= update_history.updated_at %>
+        </td>
       </tr>
     <% end %>
   </tbody>

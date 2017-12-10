@@ -3,11 +3,13 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .update-history-table {
-  colgroup:first-child {
-    width: 50%;
+  .article-user-column {
+    width: 140px;
+    white-space: nowrap;
   }
-  colgroup:last-child {
-    width: 50%;
+  .article-update-column {
+    width: 140px;
+    text-align: center;
     white-space: nowrap;
   }
 }
