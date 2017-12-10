@@ -141,12 +141,16 @@ class ArticlesController < ApplicationController
 
   # PATCH/PUT /articles/1
   # PATCH/PUT /articles/1.json
-  def update
+  def update    
     respond_to do |format|
       @article.update_user_id = current_or_guest_user.id
       if @article.update(article_params)
         format.html { redirect_to @article, notice: 'Article was successfully updated.' }
         format.json { render :show, status: :ok, location: @article }
+        # メール通知
+        @update_history = UpdateHistory.where(article_id: @article.id).order(created_at: :desc).first
+        @mail = NoticeMailer.sendmail_edit(current_or_guest_user, @article, @update_history)
+        @mail.deliver
       else
         format.html { render :edit }
         format.json { render json: @article.errors, status: :unprocessable_entity }
