@@ -130,8 +130,10 @@ class ArticlesController < ApplicationController
         format.html { redirect_to @article, notice: 'Article was successfully created.' }
         format.json { render :show, status: :created, location: @article }
         # メール通知
-        @mail = NoticeMailer.sendmail_update(current_or_guest_user, @article)
-        @mail.deliver
+        if ENV['MAIL_NOTIFY_ON_POST'] == 'on'
+          @mail = NoticeMailer.sendmail_update(current_or_guest_user, @article)
+          @mail.deliver
+        end
       else
         format.html { render :new }
         format.json { render json: @article.errors, status: :unprocessable_entity }
@@ -148,9 +150,11 @@ class ArticlesController < ApplicationController
         format.html { redirect_to @article, notice: 'Article was successfully updated.' }
         format.json { render :show, status: :ok, location: @article }
         # メール通知
-        @update_history = UpdateHistory.where(article_id: @article.id).order(created_at: :desc).first
-        @mail = NoticeMailer.sendmail_edit(current_or_guest_user, @article, @update_history)
-        @mail.deliver
+        if ENV['MAIL_NOTIFY_ON_EDIT'] == 'on'
+          @update_history = UpdateHistory.where(article_id: @article.id).order(created_at: :desc).first
+          @mail = NoticeMailer.sendmail_edit(current_or_guest_user, @article, @update_history)
+          @mail.deliver
+        end
       else
         format.html { render :edit }
         format.json { render json: @article.errors, status: :unprocessable_entity }

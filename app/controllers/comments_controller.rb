@@ -12,8 +12,10 @@ class CommentsController < ApplicationController
         format.html { redirect_to article, notice: 'Comment was successfully created.' }
         format.json { render :show, status: :created, location: article }
         # メール通知
-        @mail = NoticeMailer.sendmail_comment(current_or_guest_user, article)
-        @mail.deliver
+        if ENV['MAIL_NOTIFY_ON_COMMENT'] == 'on'
+          @mail = NoticeMailer.sendmail_comment(current_or_guest_user, article)
+          @mail.deliver
+        end
       else
         format.html { redirect_to article, alert: "Failed to create comment." }
         format.json { render json: comment.errors, status: :unprocessable_entity }
