@@ -177,7 +177,7 @@
         <% # Notification area %>
         <div class="row">
           <div>
-            <% if current_or_guest_user.read_only == "t" then %>
+            <% if current_or_guest_user && current_or_guest_user.read_only == "t" then %>
               <% if notice %>
                 <%= raw(notice) %>
               <% end %>
