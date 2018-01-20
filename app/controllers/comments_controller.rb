@@ -12,7 +12,7 @@ class CommentsController < ApplicationController
         format.html { redirect_to article, notice: 'Comment was successfully created.' }
         format.json { render :show, status: :created, location: article }
         # メール通知
-        if ENV['MAIL_NOTIFY_ON_COMMENT'] == 'on'
+        if ENV['MAIL_NOTIFY_ON_COMMENT'] == 'on' && article.published
           @mail = NoticeMailer.sendmail_comment(current_or_guest_user, article)
           @mail.deliver
         end
