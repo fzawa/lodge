@@ -6,13 +6,14 @@
       </div>
       <div class="media-body">
         <h3 class="media-heading"><%= @user.name %></h3>
-        <p>
-          <div><span class="text-muted"><%= @user.email %></span></div>
-        </p>
+        <div><span class="text-muted"><%= @user.email %></span></div>
       </div>
     </div>
     <div class="pull-right">
-      <div><span class="text-info"><%= tco :contribution %></span> <span class="badge"><%= @user.contribution %></span></div>
+      <div>
+        <%= tco :contribution %>
+        <span class="badge"><%= @user.contribution %></span>
+      </div>
     </div>
   </div>
 </div>
