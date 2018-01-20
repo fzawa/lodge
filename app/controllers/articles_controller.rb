@@ -130,7 +130,7 @@ class ArticlesController < ApplicationController
         format.html { redirect_to @article, notice: 'Article was successfully created.' }
         format.json { render :show, status: :created, location: @article }
         # メール通知
-        if ENV['MAIL_NOTIFY_ON_POST'] == 'on'
+        if ENV['MAIL_NOTIFY_ON_POST'] == 'on' && @article.published
           @mail = NoticeMailer.sendmail_update(current_or_guest_user, @article)
           @mail.deliver
         end
@@ -150,7 +150,7 @@ class ArticlesController < ApplicationController
         format.html { redirect_to @article, notice: 'Article was successfully updated.' }
         format.json { render :show, status: :ok, location: @article }
         # メール通知
-        if ENV['MAIL_NOTIFY_ON_EDIT'] == 'on'
+        if ENV['MAIL_NOTIFY_ON_EDIT'] == 'on' && @article.published
           @update_history = UpdateHistory.where(article_id: @article.id).order(created_at: :desc).first
           @mail = NoticeMailer.sendmail_edit(current_or_guest_user, @article, @update_history)
           @mail.deliver
