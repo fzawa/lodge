@@ -5,27 +5,22 @@
 <% end %>
 <ul class="dropdown-menu user-info" role="menu">
   <li role="presentation">
-    <div class="media">
-      <div class="pull-left">
-        <%= gravatar(user, 80, class: ["media-object"]) %>
+    <div class="pull-left media">
+      <div class="media-left">
+        <%= gravatar(user, 60, class: ["media-object"]) %>
       </div>
       <div class="media-body">
-        <h4 class="media-heading"><%= user.name %></h4>
-        <br />
-        <p>
-          <strong><%= user.contribution %></strong>
-          <%= tco :contribution %>
-        </p>
+        <h4 class="media-heading">
+          <%= user.name %>
+          <span class="badge" style="vertical-align: top"><%= user.contribution %></span>
+        </h4>
+        <div><span class="text-muted"><%= user.email %></span></div>
       </div>
     </div>
-  </li>
-  <li class="divider"></li>
-  <li role="presentation">
-    <h4><%= tco :article_list_title %></h4>
-    <ol>
-      <% user.recent_articles(5).each do |article| %>
-        <li><u><%= link_to article.title, article_path(article) %></u></li>
+    <div class="pull-right">
+      <%= link_to user_path(user.id), class: "btn btn-default" do %>
+        <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
       <% end %>
-    </ol>
+    </div>
   </li>
 </ul>
