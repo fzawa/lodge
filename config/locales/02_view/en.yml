@@ -62,7 +62,6 @@ en:
     tag_list_title: Tags
     recent_tag_list_title: Recent tags
     user_article_list_title: Your posts
-    specific_user_article_list_title: "Posts written by %{user_name}"
     stocked_article_list_title: Stocks
     popular_article_list_title: Recent popular
     are_you_sure: Are you sure?
@@ -96,6 +95,9 @@ en:
     login: Login
     logout: Logout
     sign_up: Sign up
+    name: Name
+    email: E-Mail
+    post_count: Article count
   custom_devise/sessions:    # Login/Sign up
     email: E-Mail
     password: Password
@@ -117,8 +119,6 @@ en:
   devise/passwords:
     new_password_title: Forgot your password?
     submit_buttoin: Send me reset password instructions
-  users:
-    post_count: "%{count} articles"
   articles:
     list_title_by_tag: "Listing articles of '%{tag}'"
     list_title_by_search: "Listing articles of '%{query}' query"

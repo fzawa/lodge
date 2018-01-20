@@ -62,7 +62,6 @@ ja:
     tag_list_title: タグ一覧
     recent_tag_list_title: 最近追加されたタグ一覧
     user_article_list_title: 投稿した記事
-    specific_user_article_list_title: "%{user_name} さんが投稿した記事"
     stocked_article_list_title: ストックした記事
     popular_article_list_title: 最近の人気記事
     are_you_sure: 本当に実行しますか？
@@ -97,6 +96,9 @@ ja:
     login: ログイン
     logout: ログアウト
     sign_up: 新規登録
+    name: ユーザー名
+    email: メールアドレス
+    post_count: 投稿数
   custom_devise/sessions:
     email: メールアドレス
     password: パスワード
@@ -118,8 +120,6 @@ ja:
   devise/passwords:
     new_password_title: パスワードの再設定
     submit_button: メール送信
-  users:
-    post_count: "投稿数: %{count}"
   articles:
     list_title_by_tag: "'%{tag}'のタグが付けられた記事一覧"
     list_title_by_search: "'%{query}'の検索結果"

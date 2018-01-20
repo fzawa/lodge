@@ -147,7 +147,7 @@
                         <h5><strong><%= tco("user_list_title") %></strong></h5>
                         <ul>
                           <% @users.each do |user| %>
-                            <li><u><%= link_to user.name, user_articles_path(user.id) %></u></li>
+                            <li><u><%= link_to user.name, user_path(user.id) %></u></li>
                           <% end %>
                         </ul>
                         <% unless @users.empty? %>

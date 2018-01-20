@@ -26,7 +26,6 @@ Rails.application.routes.draw do
       get :stocked
       get :feed
       get :owned
-      get :user, path: "user/:id", format: false, id: /[0-9]+/
       get :tagged, path: "tag/:tag", format: false, tag: /.*/
       get "draft"
     end

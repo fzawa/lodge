@@ -1,0 +1,19 @@
+<div class="panel panel-default">
+  <div class="panel-body">
+    <div class="pull-left media">
+      <div class="media-left">
+        <%= gravatar(@user, 80, class: ["media-object"]) %>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><%= @user.name %></h3>
+        <p>
+          <div><span class="text-muted"><%= @user.email %></span></div>
+        </p>
+      </div>
+    </div>
+    <div class="pull-right">
+      <div><span class="text-info"><%= tco :contribution %></span> <span class="badge"><%= @user.contribution %></span></div>
+    </div>
+  </div>
+</div>
+<%= render "articles/article_list", articles: @user_articles %>
