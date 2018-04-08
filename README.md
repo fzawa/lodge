@@ -13,16 +13,16 @@ SUP (Skill Up Project) での情報共有ツール。[Lodge](https://github.com/
 2. 依存ソフトウェアのインストール
   - Mac
     - `brew install rbenv icu4c cmake`
-    - `rbenv install 2.3.3`
-      - 2.3系最新安定版を推奨
+    - `rbenv install 2.4.4`
+      - 2.4系最新安定版を推奨
     - `cd /path/to/sup-lodge`
-    - `rbenv local 2.3.3`
+    - `rbenv local 2.4.4`
     - `gem install bundler`
   - 共通
     - [Java Development Kit](http://www.oracle.com/technetwork/java/javase/downloads/)
 3. Lodgeのインストール
   - `config/database.yml`の作成
-    - オリジナルLodgeの[インストール手順](https://github.com/lodge/lodge/blob/release/README.md)を参照
+    - `config/database.example.yml` を `config/database.yml` としてコピーし、SQLite3もしくはMySQLの設定をコメントアウト&書き換え
   - `bundle install`
   - `.env`の作成
     - `.env.example`をコピーし、内容をアップデートする
