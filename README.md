@@ -33,22 +33,23 @@ SUP (Skill Up Project) での情報共有ツール。[Lodge](https://github.com/
     - ブラウザ・OSがサポートしていない絵文字データのダウンロード
     - Macの場合、Sierra以上のみで実行可能
   - `./setup/sunspot-solr/setup-sunspot-solor-development.sh`
+    - Dockerで動かす場合は `config/sunspot.example-docker.yml` を `config/sunspot.yml` にコピーした上で実行 (動作未確認)
 4. [任意] サンプルデータの投入
-  - `bin/rake sunspot:solr:start`
+  - `bundle exec rake sunspot:solr:start`
   - `bundle exec rake db:seed`
     - サンプルユーザー・記事をDBに登録する
-  - `bin/rake sunspot:reindex`
-  - `bin/rake sunspot:solr:stop`
+  - `bundle exec rake sunspot:reindex`
+  - `bundle exec rake sunspot:solr:stop`
 5. Lodgeの起動
-  - `bin/rake sunspot:solr:start`
+  - `bundle exec rake sunspot:solr:start`
     - 全文検索エンジンが起動する
-    - 再起動の場合は `bin/rake sunspot:solr:restart`
+    - 再起動の場合は `bundle exec rake sunspot:solr:restart`
   - `bundle exec rails server`
 6. ブラウザからアクセス
   - http://localhost:3000/
 7. Lodgeの終了
   - サーバー実行画面で ctrl + c
-  - `bin/rake sunspot:solr:stop`
+  - `bundle exec rake sunspot:solr:stop`
 
 ### アップデート
 
@@ -57,10 +58,10 @@ SUP (Skill Up Project) での情報共有ツール。[Lodge](https://github.com/
   - `git pull`
 2. Lodgeのアップデート
   - `bundle update`
-  - `bin/rake sunspot:solr:start`
+  - `bundle exec rake sunspot:solr:start`
   - `bundle exec rake db:migrate`
-  - `bin/rake sunspot:reindex`
-  - `bin/rake sunspot:solr:stop`
+  - `bundle exec rake sunspot:reindex`
+  - `bundle exec rake sunspot:solr:stop`
 
 ## Cloud9にDeployする方法
 
