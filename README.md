@@ -57,6 +57,7 @@ SUP (Skill Up Project) での情報共有ツール。[Lodge](https://github.com/
   - `cd /path/to/sup-lodge`
   - `git pull`
 2. Lodgeのアップデート
+  - `bundle install`
   - `bundle update`
   - `bundle exec rake sunspot:solr:start`
   - `bundle exec rake db:migrate`
