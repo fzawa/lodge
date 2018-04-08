@@ -23,7 +23,8 @@ SUP (Skill Up Project) での情報共有ツール。[Lodge](https://github.com/
 3. Lodgeのインストール
   - `config/database.yml`の作成
     - `config/database.example.yml` を `config/database.yml` としてコピーし、SQLite3もしくはMySQLの設定をコメントアウト&書き換え
-  - `bundle install`
+  - `bundle install --no-deployment`
+    - MySQLのライブラリ不足エラーが発生した場合は、ネイティブのMySQLをインストールする (ex: `brew install mysql`)
   - `.env`の作成
     - `.env.example`をコピーし、内容をアップデートする
   - `bundle exec rake db:create`
