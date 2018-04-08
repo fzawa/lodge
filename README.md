@@ -29,7 +29,7 @@ SUP (Skill Up Project) での情報共有ツール。[Lodge](https://github.com/
     - `.env.example`をコピーし、内容をアップデートする
   - `bundle exec rake db:create`
   - `bundle exec rake db:migrate`
-  - [任意] `bundle exec gemoji extract public/images/emoji`
+  - [任意] `bundle exec rake emoji`
     - ブラウザ・OSがサポートしていない絵文字データのダウンロード
     - Macの場合、Sierra以上のみで実行可能
   - `./setup/sunspot-solr/setup-sunspot-solor-development.sh`
